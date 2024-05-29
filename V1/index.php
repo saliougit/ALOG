@@ -9,7 +9,7 @@ try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Connexion à la base de données a échoué : " . $e->getMessage();
+    echo "La connexion à la base de données a échoué : " . $e->getMessage();
     exit();
 }
 
@@ -42,6 +42,7 @@ $dataArticles = $stmtArticles->fetchAll(PDO::FETCH_ASSOC);
 
     
     <script>
+        
         const displayCategories = () => {
             let dataCategories = <?php echo json_encode($dataCategories); ?>;
             dataCategories.unshift({ 'id': 0, "libelle": "Accueil" });
